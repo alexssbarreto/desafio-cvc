@@ -43,9 +43,9 @@ public class TravelServiceTest {
     public void shoudBeSimulationForHotels_WhenFiveDaysAndTwoAdultAndOneChildAndCostAdultHundredAndCostChildFifty() {
         List<Simulation> result = this.travelService.simulationTravelForHotels(this.simulationTravelDTO);
 
-        assertEquals(BigDecimal.valueOf(714.29), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayAdult);
-        assertEquals(BigDecimal.valueOf(357.14), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayChild);
-        assertEquals(BigDecimal.valueOf(1785.72), result.get(0).getRooms().get(0).getTotalPrice());
+        assertEquals(BigDecimal.valueOf(142.86), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayAdult);
+        assertEquals(BigDecimal.valueOf(71.43), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayChild);
+        assertEquals(BigDecimal.valueOf(3035.71), result.get(0).getRooms().get(0).getTotalPrice());
     }
 
     @Test
@@ -55,18 +55,18 @@ public class TravelServiceTest {
 
         List<Simulation> result = this.travelService.simulationTravelForHotels(this.simulationTravelDTO);
 
-        assertEquals(BigDecimal.valueOf(428.57), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayAdult);
-        assertEquals(BigDecimal.valueOf(214.29), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayChild);
-        assertEquals(BigDecimal.valueOf(1071.43), result.get(0).getRooms().get(0).getTotalPrice());
+        assertEquals(BigDecimal.valueOf(142.86), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayAdult);
+        assertEquals(BigDecimal.valueOf(71.43), result.get(0).getRooms().get(0).getPriceDetail().pricePerDayChild);
+        assertEquals(BigDecimal.valueOf(1821.43), result.get(0).getRooms().get(0).getTotalPrice());
     }
 
     @Test
     public void shoudBeSimulationForHotel_WhenFiveDaysAndTwoAdultAndOneChildAndCostAdultHundredAndCostChildFifty() {
         Simulation result = this.travelService.simulationTravelForHotel(this.simulationTravelDTO);
 
-        assertEquals(BigDecimal.valueOf(714.29), result.getRooms().get(0).getPriceDetail().pricePerDayAdult);
-        assertEquals(BigDecimal.valueOf(357.14), result.getRooms().get(0).getPriceDetail().pricePerDayChild);
-        assertEquals(BigDecimal.valueOf(1785.72), result.getRooms().get(0).getTotalPrice());
+        assertEquals(BigDecimal.valueOf(142.86), result.getRooms().get(0).getPriceDetail().pricePerDayAdult);
+        assertEquals(BigDecimal.valueOf(71.43), result.getRooms().get(0).getPriceDetail().pricePerDayChild);
+        assertEquals(BigDecimal.valueOf(3035.71), result.getRooms().get(0).getTotalPrice());
     }
 
     @Test
@@ -76,8 +76,8 @@ public class TravelServiceTest {
 
         Simulation result = this.travelService.simulationTravelForHotel(this.simulationTravelDTO);
 
-        assertEquals(BigDecimal.valueOf(428.57), result.getRooms().get(0).getPriceDetail().pricePerDayAdult);
-        assertEquals(BigDecimal.valueOf(214.29), result.getRooms().get(0).getPriceDetail().pricePerDayChild);
-        assertEquals(BigDecimal.valueOf(1071.43), result.getRooms().get(0).getTotalPrice());
+        assertEquals(BigDecimal.valueOf(142.86), result.getRooms().get(0).getPriceDetail().pricePerDayAdult);
+        assertEquals(BigDecimal.valueOf(71.43), result.getRooms().get(0).getPriceDetail().pricePerDayChild);
+        assertEquals(BigDecimal.valueOf(1821.43), result.getRooms().get(0).getTotalPrice());
     }
 }

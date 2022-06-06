@@ -21,19 +21,19 @@ public class CalculatorSimulationService {
             List<Room> rooms = new ArrayList<>();
 
             hotel.getRooms().parallelStream().forEach(roomResponse -> {
-                BigDecimal valueForAdult = this.valueForPerson(numDays, roomResponse.getPrice().getAdult());
+                BigDecimal valueForAdult = this.valueForPerson(numDays, roomResponse.getPrice().getAdult(), simulationTravelDTO.getNumAdult());
                 BigDecimal comissionAdult = this.comission(valueForAdult);
-                BigDecimal subtotalAdult = comissionAdult.multiply(BigDecimal.valueOf(simulationTravelDTO.getNumAdult()));
+                BigDecimal subtotalAdult = valueForAdult.add(comissionAdult);
 
-                BigDecimal valueForChild = this.valueForPerson(numDays, roomResponse.getPrice().getChild());
+                BigDecimal valueForChild = this.valueForPerson(numDays, roomResponse.getPrice().getChild(), simulationTravelDTO.getNumChild());
                 BigDecimal comissionChild = this.comission(valueForChild);
-                BigDecimal subtotalChild = comissionChild.multiply(BigDecimal.valueOf(simulationTravelDTO.getNumChild()));
+                BigDecimal subtotalChild = valueForChild.add(comissionChild);
 
                 BigDecimal totalPrice = subtotalAdult.add(subtotalChild);
 
                 PriceDetail priceDetail = new PriceDetail();
-                priceDetail.setPricePerDayAdult(comissionAdult);
-                priceDetail.setPricePerDayChild(comissionChild);
+                priceDetail.setPricePerDayAdult(this.comission(roomResponse.getPrice().getAdult()));
+                priceDetail.setPricePerDayChild(this.comission(roomResponse.getPrice().getChild()));
 
                 Room room = new Room();
                 room.setRoomId(roomResponse.getRoomID());
@@ -55,10 +55,10 @@ public class CalculatorSimulationService {
         return result;
     }
 
-    private BigDecimal valueForPerson(Integer numDays, BigDecimal value) {
+    private BigDecimal valueForPerson(Integer numDays, BigDecimal value, Integer numPerson) {
         BigDecimal numDaysFinal = BigDecimal.valueOf(numDays);
 
-        return numDaysFinal.multiply(value);
+        return numDaysFinal.multiply(value).multiply(BigDecimal.valueOf(numPerson));
     }
 
     private BigDecimal comission(BigDecimal value) {
